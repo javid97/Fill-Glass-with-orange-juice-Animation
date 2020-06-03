@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fill Glass</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: tahoma;
+        }
+        .container{
+           position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container h2{font-size: 13px;
+            color: white;
+            height: 0px;
+            width: 300px;
+            text-align: center;
+            line-height: 0px;
+            font-weight: bold;
+            margin-top: 420px;
+            margin-left: -250px;
+            box-shadow: 0 0 55px 30px black, 0 0 55px 40px green;
+        }
+        .container h2 span {
+            font-size: 20px;
+            font-family: cooper black;
+            color: fuchsia;
+        }
+        #objects {
+            position: relative;
+            height: 200px;
+            width: 200px;
+        }
+        #flow{
+            position: absolute;
+            height: 0px;
+            width: 30px;
+            top: 0px;
+            left: -40px;
+            transform: rotate(70deg);
+            background: none;
+            border-top-left-radius: 50%;
+            border-style: solid;
+            border-color: orange;
+            border-width: 0px 0 0 6px;
+            transition: 1s;
+            z-index: 1;
+        }
+        #glass{
+            position: relative;
+            width: 50px;
+            height: 60px;
+            float: left;
+            margin-top: 100px;
+            background: white;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+            box-shadow: 0 0 0 4px rgba(0,0,1,0.1),inset 0 0 15px 10px rgba(0,0,1,0.09);
+            transition: 3s;
+        }
+        #glass::after {
+            content: "";
+            position: absolute;
+            height: 28px;
+            width: 3px;
+            top: 62px;
+            left: 23.5px;
+            background: rgba(0,0,1,0.1);
+             box-shadow: 0 0 0px 1px rgba(0,0,1,0.1),inset 0 0 1px 1px rgba(0,0,1,0.05);
+        }
+        #glass::before {
+            content: "";
+            position: absolute;
+            top: 86px;
+            left: 5px;
+            border-style: solid;
+            border-color: transparent transparent rgba(0,0,1,0.2) transparent ;
+            border-width: 5px 20px 5px;
+        }
+       #glass #glassJuiceContainer {
+            position: relative;
+            width: 47px;
+            margin-left: 1.5px;
+            height: 50px;
+            margin-top: 8px;
+            background: none;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+            overflow: hidden;
+            transition: 3s;
+        }
+        #glass #glassJuiceContainer #glassJuice {
+            position: absolute;
+            top: 51px;
+            left: -10px;
+            height: 70px;
+            width: 70px;
+            border-radius: 30%;
+            background: orange;
+        }
+        #jug{
+            position: relative;
+            height: 150px;
+            width: 100px;
+            float: right;
+            background: white;
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 0 0px 3px rgba(0,0,1,0.18),inset 0 0 25px 10px rgba(0,0,1,0.08);
+            transition: 2s;
+        }
+        #topJug{
+            position: relative;
+            height: 20px;
+            width: 75px;
+            top: -24.5px;
+            left: 13px;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            box-shadow: 0 0 0px 3px rgba(0,0,1,0.18),inset 0 0 25px 10px rgba(0,0,1,0.08);
+            background: white;
+        }
+        #topJug::before{
+            content: "";
+            position: absolute;
+            top: -40px;
+            left: 11px;
+            border-style: solid;
+            border-color: transparent transparent rgba(0,0,1,0.1) transparent;
+            border-width: 20px 25px 20px;
+        }
+        #jug::before{
+            content: "";
+            position: absolute;
+            top: 22px;
+            right: -29px;
+            width: 25px;
+            height: 100px;
+            background: none;
+             box-shadow: 0 0 0px 2px rgba(0,0,1,0.08),inset 0 0 1px 2px rgba(0,0,1,0.2);
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 20px;
+            border: 2px solid rgba(0,0,1,0.1);
+        }
+        #jug::after{
+            content: "";
+            position: absolute;
+            top: 17px;
+            border-style: solid;
+            border-color: transparent rgba(0,0,1,0.1) transparent transparent;
+            border-width: 1px 15px 15px;
+            left: -31px;
+            transform: rotateX(20deg);
+        }
+        #jug #emptyJug{
+            position: relative;
+            height: 130px;
+            width: 90px;
+            top: -10px;
+            left: 5px;
+            border-radius: 25%;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            transition: 2s;
+            background: orange;
+            box-shadow: 0 0 2px 1px rgba(0,0,1,0.1),inset 0 0 25px 10px rgba(0,0,1,0.04);
+            overflow: hidden;
+        }
+        #jug #emptyJug #emptyJuice {
+            position: absolute;
+            height: 150px;
+            width: 250px;
+            top: -90px;
+            left: -20px;
+            border-radius: 30px;
+            background: lightcyan;
+            transition: 2s;
+        }
+        #button {
+            clear: both;
+            width: 200px;
+            height: 35px;
+            margin-top: 250px;
+            margin-left: -200px;
+            font-size: 17px;
+            font-weight: bold;
+            background: rgba(0,0,1,0.8);
+            border: none;
+            color: aliceblue;
+            cursor: pointer;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div id="objects">
+            <div id="glass">
+                <div id="glassJuiceContainer">
+                    <div id="glassJuice"></div>
+                </div>
+            </div>
+            <div id="jug">
+              <div id="flow"></div>
+               <div id="topJug"></div>
+                <div id="emptyJug">
+                    <div id="emptyJuice"></div>
+                </div>
+            </div>
+        </div><br>
+        <input type="button" onclick="pullJug()" name="" value="Fill Glass" id="button"/>
+        <h2>Designed & Developed by <span>Javid Raina </span></h2>
+    </div>
+    <script>
+        function fill() {
+            var glassJuice = document.getElementById("glassJuice");
+            var id = setInterval(fillGlass,"40");
+            var top = 51;//-10
+            var transform = 0;
+            var dtransform = 8;
+            function fillGlass() {
+                if(top == -10 && transform == 488){
+                    clearInterval(id);
+                    orignalPosition();
+                }
+                glassJuice.style.top = top + "px";
+                glassJuice.style.transform = "rotate(" + transform +"deg)";
+                top--;
+                transform += dtransform;
+            }
+        }
+        function rotateJug(){
+            var jug = document.getElementById("jug");
+            var emptyJuice = document.getElementById("emptyJuice");
+            var flow = document.getElementById("flow");
+            var rotateJuice = 0;
+            var transform = 0;
+            var id = setInterval(rotate,"30");
+            function rotate(){
+                if(transform == -60){
+                    clearInterval(id);
+                    flow.style.height= "80px";
+                    fill();
+                }
+                jug.style.transform = "rotateZ(" + transform + "deg)";
+                emptyJuice.style.transform = "rotate(" + rotateJuice + "deg)";
+                transform--;
+                rotateJuice++;
+            }
+        }
+        function pullJug() {
+            var jug = document.getElementById("jug");
+            var button = document.getElementById("button");
+            var marginTop = 50;
+            var id = setInterval(pull,"10");
+            function pull() {
+                if(marginTop == -10){
+                    clearInterval(id);
+                    moveJug();
+                }
+                jug.style.marginTop = marginTop + "px";
+                marginTop--;
+                button.style.background = "crimson";
+                
+            }
+        }
+        function moveJug() {
+            var jug = document.getElementById("jug");
+            var marginRight = 0;
+            var id = setInterval(move,"20");
+            function move() {
+                if(marginRight == 30){
+                    clearInterval(id);
+                    rotateJug();
+                }
+                jug.style.marginRight = marginRight + "px";
+                marginRight++;
+            }
+        }
+        function orignalPosition() {
+            var jug = document.getElementById("jug");
+            var button = document.getElementById("button");
+            var emptyJuice = document.getElementById("emptyJuice");
+            var flow = document.getElementById("flow");
+            button.style.background = "rgba(0,0,1,0.8)";
+            flow.style.height = "0";
+            jug.style.marginTop = "50px";
+            jug.style.marginRight = "0px";
+            jug.style.transform = "rotateZ(0deg)";
+            emptyJuice.style.top = "-60px";
+            emptyJuice.style.left = "-40px";
+            emptyJuice.style.animation = "none";
+            emptyJuice.style.transform = "rotate(0deg)";
+            emptyJuice.style.width = "200%";
+            emptyJuice.style.borderBottomLeftRadius = "50%";
+            emptyJuice.style.borderBottomRightRadius = "50%";
+        }
+    </script>
+</body>
+</html>
